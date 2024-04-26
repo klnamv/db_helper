@@ -11,6 +11,7 @@
     "@types/node": "^16.18.96",
     "@types/react": "^18.2.79",
     "@types/react-dom": "^18.2.25",
+    "axios": "^1.6.8",
     "browserify-fs": "^1.0.0",
     "fs-extra": "^11.2.0",
     "os-browserify": "^0.3.0",
@@ -48,5 +49,8 @@
   "devDependencies": {
     "dotenv-webpack": "^8.1.0"
   },
-  "proxy": "https://api.notion.com"
+  "options": {
+    "allowedHosts": ["localhost", ".localhost"],
+    "proxy": "https://localhost:3000/"
+  }
 }
