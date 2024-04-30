@@ -13,6 +13,7 @@
     "@types/react-dom": "^18.2.25",
     "axios": "^1.6.8",
     "browserify-fs": "^1.0.0",
+    "cors": "^2.8.5",
     "fs-extra": "^11.2.0",
     "os-browserify": "^0.3.0",
     "path": "^0.12.7",
@@ -47,10 +48,14 @@
     ]
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "dotenv-webpack": "^8.1.0"
   },
   "options": {
-    "allowedHosts": ["localhost", ".localhost"],
+    "allowedHosts": [
+      "localhost",
+      ".localhost"
+    ],
     "proxy": "https://localhost:3000/"
   }
 }

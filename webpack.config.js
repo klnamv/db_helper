@@ -4,7 +4,6 @@ module.exports = {
         new Dotenv()
     ],
     devServer: {
-        // existing configurations
         allowedHosts: ['localhost'],
         "proxy": "https://localhost:3000/"
       },
