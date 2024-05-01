@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Client } from '@notionhq/client';
+import { useState, useEffect } from 'react';
 
 interface NotionTitleProperty {
   title: { plain_text: string }[];
@@ -84,14 +83,16 @@ function Dbhelper() {
   }, []);
   
   return (
-    <div className="App">
-      <ol>
-        {problems ? problems.map((problem) => (
-          <li key={problem.id}>
-            {problem.name}
-          </li>
-        )): <li></li>}
-      </ol>
+    <div>
+      <div className="container">
+        <table>
+          {problems ? problems.map((problem) => (
+            <tr key={problem.id}>
+              {problem.name}
+            </tr>
+          )): <tr></tr>}
+        </table>
+      </div>
     </div>
   );
 }

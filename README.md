@@ -1,4 +1,5 @@
-# DB helper 👩🏻‍💻
+# DB Chat 👩🏻‍💻
+
 
 # Running the Project 🚦
 To run the project in your local environment, follow these steps:

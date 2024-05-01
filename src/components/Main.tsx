@@ -1,15 +1,19 @@
+import '../styles/Main.scss';
+
 interface MainProps {
     onStart: () => void;
+    onChat: () => void;
 }
 
-const Main = ({ onStart }: MainProps) => {
+const Main = ({ onStart, onChat }: MainProps) => {
     return (
-        <div className="container">
+        <>
             <h1>DB Chat</h1>
             <div className="navigation">
-                <button onClick={onStart}>Get DB Chat for free</button>
+                <button className='gotodb' onClick={onStart}>Go to DB</button>
+                <button className='gotochat' onClick={onChat}>Go to Chat</button>
             </div>
-        </div>
+        </>
     );
 }
 
