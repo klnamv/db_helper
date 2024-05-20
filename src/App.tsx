@@ -4,12 +4,7 @@ import DbChat from './components/DbChat';
 import Chat from './components/Chat';
 import './App.css';
 
-const App = () =>{
-  // const [tryIt, setTryIt] = useState(false);
-
-  // const startBattle = () => {
-  //   setTryIt(true);
-  // };
+const App = () => {
 
   const [showDb, setShowDb] = useState(false);
   const [showChat, setShowChat] = useState(false);
