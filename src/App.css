@@ -1,19 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
+
 * {
   font-family: "Roboto Mono", monospace;
-  text-align: center;
+}
+
+.app {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  height: 100vh;
 }
 
 footer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  place-items: center;
   background-color: #7790ED;
-  padding: 20px;
-  margin-top: 40px;
+  color: white;
+  padding: 10px;
 }
 
 footer a {
-  text-decoration: none;
   color: white;
+  text-decoration: none;
 }

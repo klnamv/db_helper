@@ -1,41 +1,91 @@
+.main-container
+  display: grid
+  grid-template-rows: auto 1fr
+  height: 100%
+    
 header
-    display: flex
+    display: grid
+    grid-template-columns: 1fr auto
     justify-content: space-between
-    padding: 10px 30px
-    color: #7790ED
-    font-size: 1 rem
-    
-    p 
-        display: inline-flex
-        margin: 20px
+    align-items: center
+    padding: 10px 20px
 
-main
-    .dbchat 
-        font-size: 2rem
-        padding-top: 20px
-        font-weight: 700
-    
-    p
-        padding-top: 20px
+    .logo
+        height: 30px
 
-    .navigation
-        a, p
-            text-decoration: none
-            display: inline-flex
-            margin: 30px
+    .auth
+        display: grid
+        grid-template-columns: auto auto auto
+        justify-content: center
+        align-items: center
+        gap: 10px
+        
 
-        .gotochat 
-            color: white
-            background-color: #7790ED
+        .separator
+            content: '|'
+            color: black
+            margin: 0 10px 0 0
+
+        .signin, .singup
             padding: 5px 20px
+            color: #292621
+            text-decoration: none
+            cursor: pointer
+            
+        .signup
+            background-color: #7790ED
+            padding: 5px 10px
+            color: white
             cursor: pointer
 
-            &:hover
-                background-color: #5868ac
+        .signup:hover 
+            background-color: #5267b0
 
-    img 
-        height: 50vh
-        width: 50vw
+main
+    display: grid
+    grid-template-rows: auto auto 1fr auto
+    justify-items: center
+    align-items: center
+    text-align: center
+    padding: 20px
+
+    .dbchat 
+        margin: 50px 0 30px 0
+        font-size: 2rem
+        font-weight: bold
+        color: #292621
+
+    .navigation
+        display: grid
+        grid-template-columns: auto auto auto
+        justify-content: center
+        align-items: center
+        gap: 10px
+        margin: 20px 0
+
+        .gotodb, .gotochat
+            padding: 5px 20px
+            color: #292621
+            text-decoration: none
+            cursor: pointer
+
+        .separator
+            content: '|'
+            color: black
+            margin: 0 10px 0 0
+
+        .gotochat
+            background-color: #7790ED
+            color: white
+        
+        .gotodb:hover
+            color: #7790ED
+            
+        .gotochat:hover
+            background-color: #93A6ED
+        
+    img
+        height: 60vh
 
 
 

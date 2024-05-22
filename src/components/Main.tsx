@@ -1,4 +1,5 @@
 import '../styles/Main.sass';
+import logo from '../assets/logo.svg';
 
 interface MainProps {
     onStart: () => void;
@@ -7,20 +8,21 @@ interface MainProps {
 
 const Main = ({ onStart, onChat }: MainProps) => {
     return (
-        <div>
+        <div className='main-container'>
             <header>
-                <p>DB Chat</p>
-                <div className='login'>
-                    <p>Sign in</p>
-                    <p>Sign up</p>
+                <img src={logo} alt='logo' />
+                <div className='auth'>
+                    <div className='signin'>Sign in</div>
+                    <div className='separator'>|</div>
+                    <div className='signup'>Sign up</div>
                 </div>
             </header>
             <main>
                 <div className='dbchat'>DB Chat</div>
-                <p>Chat with your Notion database</p>
+                <div className='slogan'>Chat with your Notion database</div>
                 <div className="navigation">
                     <a className='gotodb' onClick={onStart}>Request a demo</a>
-                    <p>|</p>
+                    <div className='separator'>|</div>
                     <a className='gotochat' onClick={onChat}>Get DB Chat for free</a>
                 </div>  
                 <img src="https://images.unsplash.com/photo-1681518628435-2b38ba1708d9?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />

@@ -1,5 +1,6 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import OpenAI from "openai";
+import logo from '../assets/logo.svg';
 
 const api_key = process.env.REACT_APP_OPENAI;
 const openai = new OpenAI({apiKey: api_key, dangerouslyAllowBrowser: true});
@@ -177,8 +178,21 @@ const Chat: React.FC = () => {
   };
 
   return (
-    <div className='main-page'>
-      <header>ChatDB</header>
+    <div className='main-container'>
+      <header>
+          <img src={logo} alt='logo' />
+          <div className='logout'>Logout</div>
+      </header>
+      <main>
+        <div className='output-container'>
+
+        </div>
+        <div className='input'>
+          <input type='text' value={input} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Message ChatGPT...' />
+          <button onClick={handleSubmitGpt} className='send'>Send</button>
+        </div>
+
+      </main>
       <div className='gpt-container'>
         <div className='container'>
           {/* <div className="output">
@@ -194,10 +208,6 @@ const Chat: React.FC = () => {
             </ul>
           </div>
         </div>
-      </div>
-      <div className='message'>
-        <input type='text' value={input} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Message ChatGPT...' />
-        <button onClick={handleSubmitGpt} className='send'>Send</button>
       </div>
     </div>
   )

@@ -20,7 +20,7 @@ const App = () => {
   };
 
   return (
-    <>
+    <div className='app'>
       {!showDb && !showChat ? (
         <Main onStart={goToDb} onChat={goToChat} />
       ) : showDb ? (
@@ -33,7 +33,7 @@ const App = () => {
           Made with love by @klnamv ✨
         </a>
       </footer>
-    </>
+    </div>
   )
 }
 
