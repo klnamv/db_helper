@@ -1,6 +1,8 @@
 import React, { useState, ChangeEvent, KeyboardEvent } from 'react';
 import OpenAI from "openai";
 import logo from '../assets/logo.svg';
+import send_button from '../assets/send_button.svg';
+import '../styles/Chat.sass'
 
 const api_key = process.env.REACT_APP_OPENAI;
 const openai = new OpenAI({apiKey: api_key, dangerouslyAllowBrowser: true});
@@ -185,20 +187,34 @@ const Chat: React.FC = () => {
       </header>
       <main>
         <div className='output-container'>
-
+          <div className='output'>Result</div>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {problems.map(problem => (
+                <tr key={problem.id}>
+                  <td>{problem.name}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
         <div className='input'>
-          <input type='text' value={input} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Message ChatGPT...' />
-          <button onClick={handleSubmitGpt} className='send'>Send</button>
+          <input type='text' value={input} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Message to your Database...' />
+          <img src={send_button} alt='send' />
         </div>
 
       </main>
-      <div className='gpt-container'>
+      {/* <div className='gpt-container'>
         <div className='container'>
-          {/* <div className="output">
+          <div className="output">
             <h3>Query:</h3>
             {outputGpt}
-          </div> */}
+          </div>
           <div className='result'>
             <h3>Data:</h3>
             <ul>
@@ -208,8 +224,8 @@ const Chat: React.FC = () => {
             </ul>
           </div>
         </div>
-      </div>
-    </div>
+      </div>*/}
+    </div> 
   )
 }
 
