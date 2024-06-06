@@ -2,19 +2,21 @@ import '../styles/Main.sass';
 import logo from '../assets/logo.svg';
 
 interface MainProps {
+    onSignUp: () => void;
+    onSignIn: () => void;
     onStart: () => void;
     onChat: () => void;
 }
 
-const Main = ({ onStart, onChat }: MainProps) => {
+const Main = ({ onStart, onChat, onSignIn, onSignUp }: MainProps) => {
     return (
         <div className='main-container'>
             <header>
                 <img src={logo} alt='logo' />
                 <div className='auth'>
-                    <div className='signin'>Sign in</div>
+                    <div className='signin' onClick={onSignIn}>Sign in</div>
                     <div className='separator'>|</div>
-                    <div className='signup'>Sign up</div>
+                    <div className='signup' onClick={onSignUp}>Sign up</div>
                 </div>
             </header>
             <main>

@@ -169,7 +169,6 @@ const Chat: React.FC = () => {
     } catch (error) {
       console.error("Error fetching from OpenAI:", error);
     }
-    
   }
 
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>): void => {
