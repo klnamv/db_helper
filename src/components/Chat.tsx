@@ -20,6 +20,10 @@ interface NotionSelectProperty {
   select: { name: string };
 }
 
+interface NotionStatusProperty {
+  status: { name: string };
+}
+
 interface NotionDateProperty {
   date: { start: string };
 }
@@ -31,7 +35,7 @@ interface NotionPage {
     Topics: NotionMultiSelectProperty;
     Difficulty: NotionSelectProperty;
     Date: NotionDateProperty;
-    Status: NotionSelectProperty;
+    Status: NotionStatusProperty;
   };
 }
 
@@ -120,7 +124,7 @@ const dbId = process.env.REACT_APP_DB_ID;
 const Chat: React.FC = () => {
   const [input, setInput] = useState<string>('');
   const [outputGpt, setOutputGpt] = useState<string>('');
-  const [problems, setProblems] = useState<{ id: string, name: string }[]>([]);
+  const [problems, setProblems] = useState<{ id: string, name: string, topics: string, difficulty: string, date: string, status: string }[]>([]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setInput(e.target.value);
@@ -158,13 +162,22 @@ const Chat: React.FC = () => {
           body: JSON.stringify(content),
         })
         const data: NotionResponse = await response.json();
-        const formattedProblems = (data.results as any[]).map((page: NotionPage) => {
-          return {
+        console.log("Notion data:", JSON.stringify(data, null, 2));
+
+        const formattedProblems = data.results.map((page: NotionPage) => {
+          // console.log("Processing page:", page);
+          const problem = {
             id: page.id,
-            name: page.properties.Problems?.title[0]?.plain_text,
+            name: page.properties.Problems?.title[0]?.plain_text || 'Unknown',
+            topics: page.properties.Topics?.multi_select.map(topic => topic.name).join(", ") || 'Unknown',
+            difficulty: page.properties.Difficulty?.select?.name || 'Unknown',
+            date: page.properties.Date?.date?.start || 'Unknown',
+            status: page.properties.Status?.status?.name || 'Unknown',
           };
+          console.log('Formatted problem:', problem);
+          return problem;
         });
-        console.log(formattedProblems);
+        // console.log(formattedProblems);
         setProblems(formattedProblems);
     } catch (error) {
       console.error("Error fetching from OpenAI:", error);
@@ -186,21 +199,30 @@ const Chat: React.FC = () => {
       </header>
       <main>
         <div className='output-container'>
-          <div className='output'>Result</div>
-          <table>
-            <thead>
-              <tr>
-                <th>Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {problems.map(problem => (
-                <tr key={problem.id}>
-                  <td>{problem.name}</td>
+          <div className='result'>Result</div>
+            <table>
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Topics</th> 
+                  <th>Difficulty</th>
+                  <th>Date</th>
+                  <th>Status</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {problems.map(problem => (
+                  <tr key={problem.id}>
+                    <td>{problem.name}</td>
+                    <td>{problem.topics}</td>
+                    <td>{problem.difficulty}</td>
+                    <td>{problem.date}</td>
+                    <td>{problem.status}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+
         </div>
         <div className='input'>
           <input type='text' value={input} onChange={handleInputChange} onKeyDown={handleKeyPress} placeholder='Message to your Database...' />

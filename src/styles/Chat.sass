@@ -18,29 +18,31 @@ main
         width: 90vh
         height: 70vh
     
-    .output
-        font-size: 1.5rem
-        font-weight: 700
-        color: #7790ED
-
-    table   
-        width: 40vh
-
-        th
-            padding: 10px
-            text-align: left
-            height: 30px
-            color: white
-            background: #5267b0
-
-        tr, td
-            padding: 10px
-            text-align: left
-            height: 20px
-            background: #95a0c8
-            color: white
+        .result
+            font-size: 1.5rem
+            font-weight: 700
+            color: #7790ED
             
-    
+        table   
+            width: 100%
+            max-height: calc(70vh - 70px)
+            overflow-y: auto
+            display: block
+
+            th
+                padding: 10px
+                text-align: left
+                height: 30px
+                color: white
+                background: #5267b0
+
+            tr, td
+                padding: 10px
+                text-align: left
+                height: 20px
+                background: #95a0c8
+                color: white
+        
     .input 
         display: grid
         grid-template-columns: 1fr auto
