@@ -1,5 +1,5 @@
 # DB Chat 👩🏻‍💻
-
+Chat with your Notion Database
 
 # Running the Project 🚦
 To run the project in your local environment, follow these steps:
